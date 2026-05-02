@@ -1,246 +1,335 @@
-# NIXH — Premium Social Profile App
+<div align="center">
 
-> A production-quality mobile profile application with React Native (Expo) frontend + Node.js/Express backend + MySQL database.
+<!-- HEADER -->
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:1a0a00,40:3d1a00,80:7a3300,100:c45c00&height=220&section=header&text=🍽️%20Noman%20Restaurant&fontSize=54&fontColor=ffffff&fontAlignY=45&desc=Full%20Stack%20Restaurant%20Management%20%26%20Ordering%20System&descAlignY=68&descSize=16&descFontColor=ffb347&animation=fadeIn" />
+
+<br/>
+
+<!-- BADGES -->
+<img src="https://img.shields.io/badge/React-18.x-61DAFB?style=for-the-badge&logo=react&logoColor=white&labelColor=20232a" />
+&nbsp;
+<img src="https://img.shields.io/badge/Node.js-20.x-339933?style=for-the-badge&logo=node.js&logoColor=white&labelColor=1a1a1a" />
+&nbsp;
+<img src="https://img.shields.io/badge/Express.js-4.x-000000?style=for-the-badge&logo=express&logoColor=white&labelColor=1a1a1a" />
+&nbsp;
+<img src="https://img.shields.io/badge/Status-Active-c45c00?style=for-the-badge&labelColor=1a0a00" />
+
+<br/><br/>
+
+> *A modern, full-stack restaurant web application offering seamless menu browsing, cart management, and order placement — built with React on the frontend and Node.js + Express on the backend.*
+
+<br/>
+
+</div>
+
+---
+
+## 📋 Table of Contents
+
+- [Overview](#-overview)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
+- [Environment Variables](#-environment-variables)
+- [API Reference](#-api-reference)
+- [Screenshots](#-screenshots)
+- [Contributing](#-contributing)
+- [License](#-license)
+
+---
+
+## 🌟 Overview
+
+**Noman Restaurant** is a full-stack web application that delivers a rich digital dining experience. Customers can explore the menu, filter by category, add items to their cart, and place orders — all from a clean and responsive interface. The backend provides a robust REST API powering every interaction, from fetching menu items to managing order records.
+
+---
+
+## ✨ Features
+
+### 👤 Customer Side
+- 🍕 **Browse Menu** — View all dishes with images, descriptions, and prices
+- 🔍 **Category Filtering** — Filter by Starters, Mains, Desserts, Drinks, etc.
+- 🛒 **Cart Management** — Add, remove, and update item quantities in real time
+- 📦 **Order Placement** — Submit orders with delivery details
+- 📱 **Responsive Design** — Fully optimized for mobile, tablet, and desktop
+
+### 🔧 Admin / Backend
+- 📋 **Menu Management** — Add, update, and delete menu items via API
+- 📊 **Order Tracking** — View and update order statuses (Pending → Preparing → Delivered)
+- 🔐 **Secure Endpoints** — Protected routes with authentication middleware
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| **Frontend** | React 18, React Router, Context API / Redux |
+| **Styling** | Tailwind CSS / CSS Modules |
+| **Backend** | Node.js, Express.js |
+| **Database** | MongoDB / MySQL |
+| **Authentication** | JWT (JSON Web Tokens) |
+| **API Client** | Axios |
+| **Dev Tools** | Nodemon, dotenv, ESLint, Prettier |
 
 ---
 
 ## 📁 Project Structure
 
 ```
-nixh/
-├── app/                          # React Native Frontend (Expo)
-│   ├── assets/
-│   │   └── logo.png
-│   ├── src/
-│   │   ├── screens/
-│   │   │   └── ProfileScreen.tsx
-│   │   ├── components/
-│   │   │   ├── ProfileHeader.tsx
-│   │   │   ├── EditableField.tsx
-│   │   │   └── GlassButton.tsx
-│   │   ├── constants/
-│   │   │   └── colors.ts
-│   │   ├── services/
-│   │   │   └── api.ts
-│   │   └── utils/
-│   │       └── format.ts
-│   ├── App.tsx
-│   ├── app.json
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── babel.config.js
+noman-restaurant/
 │
-├── server/                       # Node.js + Express + MySQL Backend
-│   ├── index.js
-│   ├── db.js
-│   ├── .env
+├── client/                      # React Frontend
+│   ├── public/
+│   │   └── index.html
+│   ├── src/
+│   │   ├── assets/              # Images, icons, fonts
+│   │   ├── components/          # Reusable UI components
+│   │   │   ├── Navbar/
+│   │   │   ├── MenuCard/
+│   │   │   ├── Cart/
+│   │   │   └── Footer/
+│   │   ├── pages/               # Route-level pages
+│   │   │   ├── Home.jsx
+│   │   │   ├── Menu.jsx
+│   │   │   ├── Cart.jsx
+│   │   │   └── OrderConfirmation.jsx
+│   │   ├── context/             # Global state (Cart, Auth)
+│   │   ├── hooks/               # Custom React hooks
+│   │   ├── services/            # Axios API calls
+│   │   ├── App.jsx
+│   │   └── main.jsx
 │   └── package.json
 │
-├── README.md
-└── .gitignore
+├── server/                      # Node.js + Express Backend
+│   ├── config/
+│   │   └── db.js                # Database connection
+│   ├── controllers/
+│   │   ├── menuController.js
+│   │   ├── orderController.js
+│   │   └── authController.js
+│   ├── middleware/
+│   │   ├── authMiddleware.js
+│   │   └── errorHandler.js
+│   ├── models/
+│   │   ├── MenuItem.js
+│   │   ├── Order.js
+│   │   └── User.js
+│   ├── routes/
+│   │   ├── menuRoutes.js
+│   │   ├── orderRoutes.js
+│   │   └── authRoutes.js
+│   ├── .env
+│   ├── server.js
+│   └── package.json
+│
+└── README.md
 ```
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Getting Started
 
-| Layer     | Technology                          |
-|-----------|-------------------------------------|
-| Frontend  | React Native · Expo SDK 52 · TypeScript |
-| Backend   | Node.js · Express.js                |
-| Database  | MySQL (local instance)              |
-| HTTP      | Axios                               |
-| Animation | React Native Animated API           |
-| Gradients | expo-linear-gradient                |
-| Blur      | expo-blur                           |
+### Prerequisites
 
----
+Make sure you have the following installed:
 
-## ⚙️ Prerequisites
-
-- **Node.js** v18+ installed
-- **MySQL** running locally (port 3306)
-- **Expo Go** app on your phone (iOS / Android)
-- **npm** or **yarn**
+- [Node.js](https://nodejs.org/) v18+
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [MongoDB](https://www.mongodb.com/) or MySQL (depending on your DB choice)
+- [Git](https://git-scm.com/)
 
 ---
 
-## 🗄️ Database Setup
-
-Open your MySQL client and run:
-
-```sql
--- 1. Create the database
-CREATE DATABASE IF NOT EXISTS nixh_db
-  CHARACTER SET utf8mb4
-  COLLATE utf8mb4_unicode_ci;
-
-USE nixh_db;
-
--- 2. Create the users table
-CREATE TABLE IF NOT EXISTS users (
-  id    INT          NOT NULL AUTO_INCREMENT,
-  name  VARCHAR(120) NOT NULL DEFAULT '',
-  email VARCHAR(200) NOT NULL DEFAULT '',
-  phone VARCHAR(30)  NOT NULL DEFAULT '',
-  PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- 3. (Optional) Seed a test user — the server auto-seeds on first run too
-INSERT INTO users (name, email, phone)
-VALUES ('Alex Rivera', 'alex.rivera@nixh.app', '+1 (555) 000-0001');
-```
-
----
-
-## 🚀 Running the Backend
+### 1. Clone the Repository
 
 ```bash
-# 1. Enter the server folder
-cd nixh/server
-
-# 2. Install dependencies
-npm install
-
-# 3. Configure environment variables
-#    Edit server/.env with your MySQL credentials:
-#
-#    DB_HOST=localhost
-#    DB_PORT=3306
-#    DB_USER=root
-#    DB_PASSWORD=your_mysql_password
-#    DB_NAME=nixh_db
-#    PORT=5000
-
-# 4. Start the server
-npm start
-# → 🚀  NIXH server running on http://0.0.0.0:5000
-# → ✅  MySQL connected successfully
+git clone https://github.com/your-username/noman-restaurant.git
+cd noman-restaurant
 ```
 
-### API Endpoints
+---
 
-| Method | Endpoint   | Description             |
-|--------|------------|-------------------------|
-| GET    | /profile   | Fetch the user profile  |
-| PUT    | /profile   | Update the user profile |
-| GET    | /health    | Server health check     |
+### 2. Setup the Backend
 
-#### Example responses
+```bash
+# Navigate to server directory
+cd server
 
-**GET /profile**
+# Install dependencies
+npm install
+
+# Create your environment file
+cp .env.example .env
+# → Fill in your values (see Environment Variables below)
+
+# Start the development server
+npm run dev
+```
+
+The backend will run on **http://localhost:5000**
+
+---
+
+### 3. Setup the Frontend
+
+```bash
+# Open a new terminal and navigate to client
+cd client
+
+# Install dependencies
+npm install
+
+# Start the React development server
+npm run dev
+```
+
+The frontend will run on **http://localhost:5173**
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env` file inside the `server/` directory with the following:
+
+```env
+# Server
+PORT=5000
+NODE_ENV=development
+
+# Database
+MONGO_URI=mongodb://localhost:27017/noman-restaurant
+# or for MySQL:
+# DB_HOST=localhost
+# DB_USER=root
+# DB_PASSWORD=yourpassword
+# DB_NAME=noman_restaurant
+
+# Authentication
+JWT_SECRET=your_super_secret_jwt_key
+JWT_EXPIRES_IN=7d
+
+# CORS
+CLIENT_URL=http://localhost:5173
+```
+
+> ⚠️ **Never commit your `.env` file.** It is already listed in `.gitignore`.
+
+---
+
+## 📡 API Reference
+
+### Base URL
+```
+http://localhost:5000/api
+```
+
+---
+
+### 🍽️ Menu Endpoints
+
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
+| `GET` | `/menu` | Get all menu items | ❌ |
+| `GET` | `/menu/:id` | Get single menu item | ❌ |
+| `GET` | `/menu/category/:name` | Filter by category | ❌ |
+| `POST` | `/menu` | Add new menu item | ✅ Admin |
+| `PUT` | `/menu/:id` | Update menu item | ✅ Admin |
+| `DELETE` | `/menu/:id` | Delete menu item | ✅ Admin |
+
+**Sample Response — `GET /api/menu`**
 ```json
 {
   "success": true,
-  "data": {
-    "id": 1,
-    "name": "Alex Rivera",
-    "email": "alex.rivera@nixh.app",
-    "phone": "+1 (555) 000-0001"
-  }
+  "count": 12,
+  "data": [
+    {
+      "_id": "64abc123",
+      "name": "Chicken Karahi",
+      "description": "Tender chicken cooked in a rich, spiced tomato gravy.",
+      "price": 850,
+      "category": "Mains",
+      "image": "/uploads/chicken-karahi.jpg",
+      "available": true
+    }
+  ]
 }
 ```
 
-**PUT /profile** (body)
+---
+
+### 📦 Order Endpoints
+
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
+| `POST` | `/orders` | Place a new order | ❌ |
+| `GET` | `/orders` | Get all orders | ✅ Admin |
+| `GET` | `/orders/:id` | Get order by ID | ✅ |
+| `PUT` | `/orders/:id/status` | Update order status | ✅ Admin |
+
+**Sample Request — `POST /api/orders`**
 ```json
 {
-  "name": "Jordan Lee",
-  "email": "jordan@nixh.app",
-  "phone": "+1 (555) 999-8888"
+  "customerName": "Ahmed Khan",
+  "phone": "03001234567",
+  "address": "House 12, Block A, Islamabad",
+  "items": [
+    { "menuItem": "64abc123", "quantity": 2 },
+    { "menuItem": "64abc456", "quantity": 1 }
+  ]
 }
 ```
 
 ---
 
-## 📱 Running the Frontend
+### 🔐 Auth Endpoints
 
-### Step 1 — Find your machine's local IP
-
-```bash
-# macOS / Linux
-ifconfig | grep "inet "
-
-# Windows
-ipconfig
-# Look for "IPv4 Address" → e.g. 192.168.1.42
-```
-
-### Step 2 — Update the API base URL
-
-Open `nixh/app/src/services/api.ts` and replace:
-
-```ts
-const BASE_URL = 'http://YOUR_LOCAL_IP:5000';
-```
-
-with your actual IP, for example:
-
-```ts
-const BASE_URL = 'http://192.168.1.42:5000';
-```
-
-> **Android Emulator?** Use `http://10.0.2.2:5000` instead.
-
-### Step 3 — Install & start
-
-```bash
-cd nixh/app
-npm install
-npx expo start
-```
-
-Scan the QR code with **Expo Go** on your phone.  
-Both the phone and your computer must be on the **same Wi-Fi network**.
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/auth/register` | Register a new user |
+| `POST` | `/auth/login` | Login and receive JWT |
+| `GET` | `/auth/me` | Get current user profile |
 
 ---
 
-## 🎨 Design System
+## 📸 Screenshots
 
-| Token            | Value                          |
-|------------------|--------------------------------|
-| Background       | `#0A0A0A`                      |
-| Card (glass)     | `rgba(255,255,255,0.04)`       |
-| Accent (cyan)    | `#00F5FF`                      |
-| Text Primary     | `#FFFFFF`                      |
-| Text Secondary   | `#A1A1AA`                      |
-| Border           | `rgba(255,255,255,0.08)`       |
-| Gradient Start   | `#00F5FF`                      |
-| Gradient Mid     | `#8B5CF6`                      |
-| Gradient End     | `#EC4899`                      |
+> *Add your screenshots here after deployment.*
+
+| Home Page | Menu Page |
+|-----------|-----------|
+| ![Home](./docs/screenshots/home.png) | ![Menu](./docs/screenshots/menu.png) |
+
+| Cart | Order Confirmation |
+|------|--------------------|
+| ![Cart](./docs/screenshots/cart.png) | ![Order](./docs/screenshots/order.png) |
 
 ---
 
-## ✅ Feature Checklist
+## 🤝 Contributing
 
-- [x] Profile data loaded from MySQL on app start
-- [x] Animated profile header with spinning gradient ring + glow halo
-- [x] Stats row (Posts · Followers · Following)
-- [x] Glassmorphic field cards with animated focus border
-- [x] Edit Profile mode — fields become live inputs
-- [x] Save Changes → PUT /profile → MySQL updated → UI refreshes
-- [x] Cancel Edit — reverts to original values
-- [x] Pull-to-refresh
-- [x] Success toast animation after save
-- [x] Error shake animation + retry screen
-- [x] Loading spinner (animated gradient ring)
-- [x] Account Details meta card (ID · Status · Joined)
-- [x] Dark mode throughout
-- [x] Keyboard-aware layout (iOS padding)
+Contributions are always welcome! Here's how to get started:
 
----
+1. **Fork** the repository
+2. **Create** a feature branch — `git checkout -b feature/your-feature-name`
+3. **Commit** your changes — `git commit -m "feat: add your feature"`
+4. **Push** to your branch — `git push origin feature/your-feature-name`
+5. **Open** a Pull Request
 
-## 🔧 Troubleshooting
-
-| Problem | Fix |
-|---------|-----|
-| "Network Error" on device | Confirm phone and PC are on the same Wi-Fi. Check your IP in `api.ts`. |
-| MySQL connection refused | Verify `.env` credentials and that MySQL is running on port 3306. |
-| Expo QR not scanning | Run `npx expo start --tunnel` to use Expo's tunnel mode. |
-| Table not created | The server auto-creates the `users` table on first `/profile` call. |
-| Blank profile image | The logo fetches from `postimg.cc` — confirm internet access on device. |
+Please follow the existing code style and include meaningful commit messages.
 
 ---
 
 ## 📄 License
 
-MIT — built with ❤️ for the NIXH project.
+This project is licensed under the **MIT License** — see the [LICENSE](./LICENSE) file for details.
+
+---
+
+<div align="center">
+
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=0:1a0a00,40:3d1a00,80:7a3300,100:c45c00&height=120&section=footer&animation=fadeIn&reversal=true" />
+
+</div>
