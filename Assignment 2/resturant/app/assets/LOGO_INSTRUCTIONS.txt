@@ -1,0 +1,14 @@
+LOGO SETUP
+==========
+
+The NIXH app loads the logo at runtime from:
+  https://i.postimg.cc/5608yfsM/image.png
+
+For local assets (splash screen / app icon), download the image and save it as:
+  nixh/app/assets/logo.png
+
+To download via terminal:
+  curl -L "https://i.postimg.cc/5608yfsM/image.png" -o logo.png
+
+The ProfileHeader component uses the remote URL directly, so the app
+works without a local logo.png as long as the device has internet access.
